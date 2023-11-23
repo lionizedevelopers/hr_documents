@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_form_inherite_hr_documents" model="ir.ui.view">
+            <field name="name">HR Employee</field>
+            <field name="model">hr.employee</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+
+                <!-- aadharcard and pancard field in hr employee -->
+                <xpath expr="//page[@name='personal_information']/group" position="inside">
+                    <group string="Documents">
+                        <field name="aadharcard" />
+                         <field name="pancard" />
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_view_multi_image_upload" model="ir.ui.view">
+        <field name="name">Bulk Upload</field>
+        <field name="model">bulk.upload.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+
+                <group class="oe_title">
+                    <field name="select_update" required="1" domain="[('ttype','=','binary'),('model_id','=','hr.employee')]" />
+                    <field name="employee_ids" widget="many2many_tags"/>
+                    <field name="file" string='Upload Zip' filename='file_name' widget="binary" required='1'/>
+                    <field name="file_name" invisible='1'/>
+                </group>
+                    <p style="color:tomato;"> *** Only Zip File Allows</p>
+                    <p style="color:tomato;"> ** Please Remember in side Zip,File name Should Exact Mach with Employee Name</p>
+                <footer>
+                    <button name="upload_images" string="Upload" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_multi_image_upload" model="ir.actions.act_window">
+        <field name="name">Bulk Upload</field>
+        <field name="res_model">bulk.upload.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_view_multi_image_upload" />
+        <field name="target">new</field>
+    </record>
+
+</odoo>
